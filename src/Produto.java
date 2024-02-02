@@ -7,6 +7,7 @@ public class Produto {
     private double precoUnitario;
     private int quantidade;
 
+
     public Produto(String nome) {
         this.setNome(nome);
     }
@@ -64,9 +65,13 @@ public class Produto {
         }
         return precoFinal;
     }
+
+    public void imprimirDadosDoProduto() {
+        System.out.println(":: Nome: " + nome);
+        System.out.println(":: Descrição: " + descricao);
+    }
+
 }
-
-
 
 
 
