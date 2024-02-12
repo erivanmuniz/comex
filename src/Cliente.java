@@ -1,4 +1,5 @@
-public class Cliente {
+
+public class Cliente implements Identificavel{
 
     //Criação das classe Cliente sem o método construtor
 
@@ -8,6 +9,15 @@ public class Cliente {
     private String profissao;
     private String telefone;
     private Endereco endereco;
+
+    public Cliente(String nomeCliente, String cpf, String email, String profissao, String telefone) {
+        this.nomeCliente = nomeCliente;
+        this.cpf = cpf;
+        this.email = email;
+        this.profissao = profissao;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     //Criação os getters e setters
 
@@ -57,5 +67,10 @@ public class Cliente {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public String Identificar() {
+        return "Cliente: " + getNomeCliente() + ", CPF: " + getCpf();
     }
 }
