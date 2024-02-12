@@ -1,4 +1,7 @@
 
+import br.com.alura.comex.modelos.Produto;
+import com.google.gson.*;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,24 +16,38 @@ public class ConsultaApi {
 
         System.out.print("Digite o número da API externa: ");
 
-
         try {
-            int numero = scanner.nextInt();long
+            int numero = scanner.nextInt();
             String endereco = "https://fakestoreapi.com/products/" + numero;
-            System.out.println(endereco);
+            System.out.println("URL da API: " + endereco);
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Resultado da consulta:");
-            System.out.println(response.body());
 
+            // Impressão da String jsom antes da desserialização
+            String json = response.body();
+            System.out.println("JSON Recebido:");
+            System.out.println(json);
+
+            // Desserializando o json para um objeto Product usando Gson
+            Gson gson = new Gson();
+            JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
+
+            // Adaptando a correspondência dos campos conforme necessário
+            String title = jsonObject.getAsJsonPrimitive("title").getAsString();
+            String description = jsonObject.getAsJsonPrimitive("description").getAsString();
+
+            Product product = new Product(title, description);
+
+            // Imprimindo os dados
+            System.out.println("Resultado da consulta:");
+            System.out.println("Title: " + product.title());
+            System.out.println("Description: " + product.description());
         } catch (Exception e) {
-            //não aparecerá mensagem
-            System.out.println("Erro: dados não encontrados : " + e.getMessage());
+            System.out.println("Erro: dados inexistentes: " + e.getMessage());
         } finally {
             scanner.close();
-            
         }
     }
 }
