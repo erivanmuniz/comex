@@ -68,14 +68,12 @@ public class Endereco {
         enderecoCliente.setRua("Rua dos Andradas");
         enderecoCliente.setNumero(250);
 
-        Cliente cliente1 = new Cliente();
-        cliente1.setNomeCliente("Pedro Barbosa");
-        cliente1.setCpf("21547896321");
-        cliente1.setEmail("pedrobarbosa@gmail.com");
-        cliente1.setProfissao("Eletricista");
-        cliente1.setTelefone("11 998885511");
+        Cliente cliente1 = new Cliente("Pedro Barbosa", "21547896321",
+                "pedrobarbosa@gmail.com","Eletricista", "11 998885511");
         cliente1.setEndereco(enderecoCliente);
         return cliente1;
+
+
     }
 
 }

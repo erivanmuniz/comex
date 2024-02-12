@@ -1,6 +1,6 @@
 import br.com.alura.comex.modelos.Produto;
 
-public class ProdutoLivro extends Produto {
+public class ProdutoLivro extends Produto implements Identificavel{
 
     private String isbn;
     private int totalPaginas;
@@ -9,5 +9,26 @@ public class ProdutoLivro extends Produto {
         super(nome, descricao);
         this.isbn = isbn;
         this.totalPaginas = totalPaginas;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public int getTotalPaginas() {
+        return totalPaginas;
+    }
+
+    public void setTotalPaginas(int totalPaginas) {
+        this.totalPaginas = totalPaginas;
+    }
+
+    @Override
+    public String Identificar() {
+        return "ProdutoLivro: " + getNome() + ", ISBN: " + getIsbn();
     }
 }
