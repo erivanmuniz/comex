@@ -2,6 +2,8 @@ package br.com.alura.comex.modelos;
 
 public class Produto {
 
+    private String title;
+    private String description;
     private String nome;
     private String descricao;
     private double precoUnitario;
@@ -10,6 +12,7 @@ public class Produto {
 
     public Produto(String nome) {
         this.setNome(nome);
+        this.setDescricao(descricao);
     }
 
     public void setPrecoUnitario(double precoUnitario) {
@@ -67,10 +70,18 @@ public class Produto {
     }
 
     public void imprimirDadosDoProduto() {
-        System.out.println(":: Nome: " + nome);
-        System.out.println(":: Descrição: " + descricao);
+        System.out.println("Nome: " + nome);
+        System.out.println("Descrição: " + descricao);
     }
 
+
+    public String title() {
+        return this.title;
+    }
+
+    public String description() {
+        return this.description;
+    }
 }
 
 
